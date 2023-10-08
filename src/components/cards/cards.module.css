@@ -2,5 +2,4 @@
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
-    background-image: url('../fondo.png');
 }

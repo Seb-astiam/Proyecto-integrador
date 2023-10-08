@@ -1,15 +1,16 @@
 import React from "react";
-import SearchBar from "../searchBar/SearchBar";
+import style from './nav.module.css'
 
-const Nav = ({onSearch}) => {
+
+
+const Nav = ({children}) => {
     return (
-        <div> 
-            <SearchBar 
-            onSearch = {onSearch}
-                //  onSearch={(characterID) => window.alert(characterID)}
-                 />
+        <div className={style.Nav}> 
+       {children}
         </div>
     )
 }
 
 export default Nav
+
+

@@ -19,7 +19,7 @@ export default function SearchBar(props) {
             height: 40,
             borderRadius: 10,
             width: 250,
-            marginRight: 20,
+            marginRight: 15,
          }}
          value = {id}
          onChange={handleChange}

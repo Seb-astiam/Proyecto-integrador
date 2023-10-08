@@ -1,37 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Cards from './components/cards/Cards';
 import Nav from './components/Nav/nav'
-import axios from 'axios'
+import {Link, Route, Routes} from 'react-router-dom'
+import About from './components/Paginas/About';
+import Home from './components/Paginas/Home';
+import Detail from './components/Paginas/Detail';
 
 function App() {
    
-   const [characters, setCharacters] = useState([]);
-
-   const onSearch = (id) => {
-      try {
-         axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-            if (data.name) {
-               setCharacters((oldChars) => [...oldChars, data]);
-            } else {
-               window.alert('¡No hay personajes con este ID!');
-            }
-         });
-      } catch (error) {
-           console.error(error);
-      }
-   };
-   const onClose = (id)=>{
-         const characterId = parseInt(id);
-         const updatedCharacters = characters.filter((character) => character.id !== characterId);
-   
-         setCharacters(updatedCharacters);
-   }
    return (
       
       <div className='App'>
-         <Nav onSearch = {onSearch}></Nav>
-         <Cards characters={characters} onClose={onClose} />
+         <Nav >
+            <Link to='/'>Home</Link> 
+            <Link to='/About'>About</Link> 
+         </Nav>
+         <Routes>
+            <Route exact path='/' element={<Home />}></Route>
+            <Route exact path='/About' element={<About/>}></Route>
+            <Route exact path='/Detail/:id' element={<Detail/>}></Route>
+         </Routes>
       </div>
    );
 }
